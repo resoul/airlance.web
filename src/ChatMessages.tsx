@@ -1,4 +1,9 @@
+import { useAvatar } from "./avatar/useAvatar.ts";
+
 export function ChatMessages() {
+    const { avatar } = useAvatar();
+    const avatarSrc = avatar ?? "/images/200x200.png"
+
     return (
         <div className="scrollbar-sm grow overflow-y-auto px-[calc(var(--margin-x)-.5rem)] py-5 transition-all duration-[.25s]">
             <div className="space-y-5">
@@ -39,7 +44,7 @@ export function ChatMessages() {
                         </div>
                     </div>
                     <div className="avatar">
-                        <img className="rounded-full" src="/images/200x200.png" alt="avatar"/>
+                        <img className="rounded-full" src={avatarSrc} alt="avatar"/>
                     </div>
                 </div>
                 <div className="flex items-start space-x-2.5 sm:space-x-5">
@@ -176,7 +181,7 @@ export function ChatMessages() {
                         </div>
                     </div>
                     <div className="avatar">
-                        <img className="rounded-full" src="/images/200x200.png" alt="avatar"/>
+                        <img className="rounded-full" src={avatarSrc} alt="avatar"/>
                     </div>
                 </div>
                 <div className="mx-4 flex items-center space-x-3">
@@ -216,7 +221,7 @@ export function ChatMessages() {
                         </div>
                     </div>
                     <div className="avatar">
-                        <img className="rounded-full" src="/images/200x200.png" alt="avatar"/>
+                        <img className="rounded-full" src={avatarSrc} alt="avatar"/>
                     </div>
                 </div>
                 <div className="mx-4 flex items-center space-x-3">
@@ -256,7 +261,7 @@ export function ChatMessages() {
                         </div>
                     </div>
                     <div className="avatar">
-                        <img className="rounded-full" src="/images/200x200.png" alt="avatar"/>
+                        <img className="rounded-full" src={avatarSrc} alt="avatar"/>
                     </div>
                 </div>
                 <div className="flex items-start space-x-2.5 sm:space-x-5">
@@ -290,7 +295,7 @@ export function ChatMessages() {
                         </div>
                     </div>
                     <div className="avatar">
-                        <img className="rounded-full" src="/images/200x200.png" alt="avatar"/>
+                        <img className="rounded-full" src={avatarSrc} alt="avatar"/>
                     </div>
                 </div>
                 <div className="mx-4 flex items-center space-x-3">
@@ -329,7 +334,7 @@ export function ChatMessages() {
                         </div>
                     </div>
                     <div className="avatar">
-                        <img className="rounded-full" src="/images/200x200.png" alt="avatar"/>
+                        <img className="rounded-full" src={avatarSrc} alt="avatar"/>
                     </div>
                 </div>
             </div>

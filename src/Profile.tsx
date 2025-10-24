@@ -1,8 +1,10 @@
-import type React from 'react';
+import React from 'react';
 import { type Options } from '@popperjs/core';
 import { usePopper } from "./hook/usePopper.tsx";
+import { useAvatar } from "./avatar/useAvatar.ts";
 
 export const Profile: React.FC = () => {
+    const { username, avatar } = useAvatar();
     const config: Partial<Options> = {
         placement: 'right-end',
         modifiers: [
@@ -25,13 +27,15 @@ export const Profile: React.FC = () => {
         console.log('Popper toggled:', isOpen);
     });
 
+    const avatarSrc = avatar ?? "/images/200x200.png"
+
     return (
         <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} className="flex">
             <button ref={refEl as React.RefObject<HTMLButtonElement>} onClick={handleRefEvent} className="avatar cursor-pointer size-12">
                 <img
                     className="rounded-full"
-                    src="/images/200x200.png"
-                    alt="avatar"
+                    src={avatarSrc}
+                    alt={username}
                 />
                 <span
                     className="absolute right-0 size-3.5 rounded-full border-2 border-white bg-success dark:border-navy-700"
@@ -47,8 +51,8 @@ export const Profile: React.FC = () => {
                         <div className="avatar size-14">
                             <img
                                 className="rounded-full"
-                                src="/images/200x200.png"
-                                alt="avatar"
+                                src={avatarSrc}
+                                alt={username}
                             />
                         </div>
                         <div>
@@ -56,7 +60,7 @@ export const Profile: React.FC = () => {
                                 href="#"
                                 className="text-base font-medium text-slate-700 hover:text-primary focus:text-primary dark:text-navy-100 dark:hover:text-accent-light dark:focus:text-accent-light"
                             >
-                                Travis Fuller
+                                { username }
                             </a>
                             <p className="text-xs text-slate-400 dark:text-navy-300">
                                 Product Designer
