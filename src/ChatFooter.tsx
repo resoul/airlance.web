@@ -1,4 +1,26 @@
-export function ChatFooter() {
+import { useState } from "react";
+
+interface ChatFooterProps {
+    onSendMessage: (message: string) => void;
+}
+
+export function ChatFooter({ onSendMessage }: ChatFooterProps) {
+    const [message, setMessage] = useState('');
+
+    const handleSubmit = () => {
+        if (message.trim()) {
+            onSendMessage(message.trim());
+            setMessage('');
+        }
+    };
+
+    const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            handleSubmit();
+        }
+    };
+
     return (
         <div className="chat-footer relative flex h-12 w-full shrink-0 items-center justify-between border-t border-slate-150 bg-white px-[calc(var(--margin-x)-.25rem)] transition-[padding,width] duration-[.25s] dark:border-navy-600 dark:bg-navy-800">
             <div className="-ml-1.5 flex flex-1 space-x-2">
@@ -10,8 +32,14 @@ export function ChatFooter() {
                               d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13"/>
                     </svg>
                 </button>
-                <input type="text" className="form-input h-9 w-full bg-transparent placeholder:text-slate-400/70"
-                       placeholder="Write the message"/>
+                <input
+                    type="text"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    onKeyUp={handleKeyPress}
+                    className="form-input h-9 w-full bg-transparent placeholder:text-slate-400/70"
+                    placeholder="Write the message"
+                />
             </div>
             <div className="-mr-1.5 flex">
                 <button
@@ -23,6 +51,8 @@ export function ChatFooter() {
                     </svg>
                 </button>
                 <button
+                    onClick={() => handleSubmit()}
+                    disabled={!message.trim()}
                     className="btn size-9 shrink-0 rounded-full p-0 text-primary hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:text-accent-light dark:hover:bg-accent-light/20 dark:focus:bg-accent-light/20 dark:active:bg-accent-light/25">
                     <svg xmlns="http://www.w3.org/2000/svg" className="size-5.5" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor" strokeWidth="1.5">
