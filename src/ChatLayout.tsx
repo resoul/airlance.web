@@ -6,7 +6,7 @@ import { Drawer } from "./Drawer.tsx";
 import { ChatDetail } from "./ChatDetail.tsx";
 import { ChatHeader } from "./ChatHeader.tsx";
 import { ChatMessages } from "./ChatMessages.tsx";
-import { ChatFooter } from "./ChatFooter.tsx";
+import { ChatTextEditor } from "./ChatTextEditor.tsx";
 import { useDrawer } from "./hook/useDrawer.tsx";
 import { contacts } from "./data/contacts.ts";
 import type { Message } from "./types/message.ts";
@@ -125,7 +125,7 @@ export function ChatLayout() {
                     isChatDetailOpen={chatDetailDrawer.isOpen}
                 />
                 <ChatMessages messages={messages} />
-                <ChatFooter onSendMessage={handleSendMessage} />
+                <ChatTextEditor onSendMessage={handleSendMessage} />
                 <ChatDetail
                     contact={currentContact}
                     drawer={chatDetailDrawer}

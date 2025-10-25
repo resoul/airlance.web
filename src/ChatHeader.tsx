@@ -36,9 +36,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
         handleRefEvent,
         handleMouseEnter,
         handleMouseLeave
-    } = usePopper(config, 'click', (isOpen: boolean) => {
-        console.log('Popper toggled:', isOpen);
-    });
+    } = usePopper(config, 'click');
 
     const displayName = contact?.name || 'Select a contact';
     const displayAvatar = contact?.avatar || '/images/200x200.png';

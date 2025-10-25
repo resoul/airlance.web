@@ -4,9 +4,10 @@ import type { Contact } from '../types/contact';
 
 interface ContactItemProps {
     contact: Contact;
+    variant?: 'full' | 'mini';
 }
 
-export const ContactItem: React.FC<ContactItemProps> = ({ contact }) => {
+export const ContactItem: React.FC<ContactItemProps> = ({ contact, variant = 'full' }) => {
     const navigate = useNavigate();
     const { contactId } = useParams();
     const isActive = contactId === contact.id;
@@ -22,12 +23,14 @@ export const ContactItem: React.FC<ContactItemProps> = ({ contact }) => {
         return 'bg-slate-300';
     };
 
+    const isMini = variant === 'mini';
+
     return (
         <div
             onClick={handleClick}
-            className={`flex cursor-pointer items-center space-x-2.5 px-4 py-2.5 font-inter hover:bg-slate-150 dark:hover:bg-navy-600 ${
-                isActive ? 'bg-slate-150 dark:bg-navy-600' : ''
-            }`}
+            className={`flex cursor-pointer items-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600 ${
+                isMini ? 'justify-center' : 'space-x-2.5 px-4 font-inter'
+            } ${isActive ? 'bg-slate-150 dark:bg-navy-600' : ''}`}
         >
             <div className="avatar size-10">
                 <img
@@ -43,32 +46,34 @@ export const ContactItem: React.FC<ContactItemProps> = ({ contact }) => {
                     )}
                 </div>
             </div>
-            <div className="flex flex-1 flex-col">
-                <div className="flex items-baseline justify-between space-x-1.5">
-                    <p className="text-xs-plus font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
-                        {contact.name}
-                    </p>
-                    <span className="text-tiny-plus text-slate-400 dark:text-navy-300">
-                        {contact.time}
-                    </span>
+            {!isMini && (
+                <div className="flex flex-1 flex-col">
+                    <div className="flex items-baseline justify-between space-x-1.5">
+                        <p className="text-xs-plus font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
+                            {contact.name}
+                        </p>
+                        <span className="text-tiny-plus text-slate-400 dark:text-navy-300">
+                            {contact.time}
+                        </span>
+                    </div>
+                    <div className="mt-1 flex items-center justify-between space-x-1">
+                        <p className="text-xs-plus text-slate-400 line-clamp-1 dark:text-navy-300">
+                            {contact.lastMessage}
+                        </p>
+                        {contact.unreadCount && contact.unreadCount > 0 && (
+                            <div
+                                className={`flex h-4.5 min-w-[1.125rem] items-center justify-center rounded-full px-1.5 text-tiny-plus font-medium leading-none ${
+                                    isActive
+                                        ? 'bg-primary text-white dark:bg-accent'
+                                        : 'bg-slate-200 text-slate-800 dark:bg-navy-450 dark:text-white'
+                                }`}
+                            >
+                                {contact.unreadCount}
+                            </div>
+                        )}
+                    </div>
                 </div>
-                <div className="mt-1 flex items-center justify-between space-x-1">
-                    <p className="text-xs-plus text-slate-400 line-clamp-1 dark:text-navy-300">
-                        {contact.lastMessage}
-                    </p>
-                    {contact.unreadCount && contact.unreadCount > 0 && (
-                        <div
-                            className={`flex h-4.5 min-w-[1.125rem] items-center justify-center rounded-full px-1.5 text-tiny-plus font-medium leading-none ${
-                                isActive
-                                    ? 'bg-primary text-white dark:bg-accent'
-                                    : 'bg-slate-200 text-slate-800 dark:bg-navy-450 dark:text-white'
-                            }`}
-                        >
-                            {contact.unreadCount}
-                        </div>
-                    )}
-                </div>
-            </div>
+            )}
         </div>
     );
 };

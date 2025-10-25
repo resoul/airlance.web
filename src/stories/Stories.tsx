@@ -41,8 +41,6 @@ export function Stories({
                     spaceBetween={10}
                     slidesPerGroup={3}
                     slidesPerView="auto"
-                    onSlideChange={() => console.log('slide change')}
-                    onSwiper={(swiper) => console.log(swiper)}
                 >
                     {stories.map((story) => (
                         <SwiperSlide

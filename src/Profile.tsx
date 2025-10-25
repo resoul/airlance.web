@@ -23,9 +23,7 @@ export const Profile: React.FC = () => {
         handleRefEvent,
         handleMouseEnter,
         handleMouseLeave
-    } = usePopper(config, 'click', (isOpen: boolean) => {
-        console.log('Popper toggled:', isOpen);
-    });
+    } = usePopper(config, 'click');
 
     const avatarSrc = avatar ?? "/images/200x200.png"
 

@@ -12,6 +12,12 @@ import { SettingsIcon } from "./icons/SettingsIcon.tsx";
 import { ElementIcon } from "./icons/ElementIcon.tsx";
 import { ComponentIcon } from "./icons/ComponentIcon.tsx";
 import { FormIcon } from "./icons/FormIcon.tsx";
+import { ChatListSettings } from "./ChatListSettings.tsx";
+import { ChatsIcon } from "./icons/ChatsIcon.tsx";
+import { UsersIcon } from "./icons/UsersIcon.tsx";
+import { GroupsIcon } from "./icons/GroupsIcon.tsx";
+import { ChannelsIcon } from "./icons/ChannelsIcon.tsx";
+import { MoreIcon } from "./icons/MoreIcon.tsx";
 
 const mockStories: Story[] = [
     {
@@ -262,105 +268,46 @@ export function Sidebar() {
                         <div
                             className="flex h-12 shrink-0 justify-between border-t border-slate-150 px-1.5 py-1 dark:border-navy-600"
                         >
-                            <a
-                                href="#"
-                                data-tooltip="All Chats"
+                            <Tooltip
+                                as="a"
+                                href="/messenger"
+                                content="All Chats"
                                 className="btn size-9 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="size-5"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                >
-                                    <path
-                                        d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z"
-                                    />
-                                    <path
-                                        d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z"
-                                    />
-                                </svg>
-                            </a>
-                            <a
-                                href="#"
-                                data-tooltip="Users"
+                                <ChatsIcon className="size-5" />
+                            </Tooltip>
+                            <Tooltip
+                                as="a"
+                                href="/users"
+                                content="Users"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="size-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                                    />
-                                </svg>
-                            </a>
-                            <a
-                                href="#"
-                                data-tooltip="Groups"
+                                <UsersIcon className="size-5" stroke="currentColor" strokeWidth="1.5" />
+                            </Tooltip>
+                            <Tooltip
+                                as="a"
+                                href="/group"
+                                content="Groups"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="size-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                                    />
-                                </svg>
-                            </a>
-                            <a
-                                href="#"
-                                data-tooltip="Channels"
+                                <GroupsIcon className="size-5" stroke="currentColor" strokeWidth="1.5" />
+                            </Tooltip>
+                            <Tooltip
+                                as="a"
+                                href="/channels"
+                                content="Channels"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="size-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
-                                    />
-                                </svg>
-                            </a>
-                            <a
-                                href="#"
-                                data-tooltip="More"
+                                <ChannelsIcon className="size-5" stroke="currentColor" strokeWidth="1.5" />
+                            </Tooltip>
+                            <Tooltip
+                                as="a"
+                                href="/more"
+                                content="More"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="size-5"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                                    />
-                                </svg>
-                            </a>
+                                <MoreIcon className="size-5" stroke="currentColor" strokeWidth="1.5" />
+                            </Tooltip>
                         </div>
                     </div>
                 </div>
@@ -444,238 +391,13 @@ export function Sidebar() {
                                 className="my-4 mx-4 h-px shrink-0 bg-slate-200 dark:bg-navy-500"
                             ></div>
                             <div className="flex flex-col">
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/avatar/avatar-19.jpg"
-                                            alt="avatar"
-                                        />
-                                        <div
-                                            className="absolute right-0 size-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-
-                                        <div
-                                            className="absolute right-0 size-3 rounded-full border-2 border-white bg-primary dark:border-navy-700 dark:bg-accent"
-                                        >
-                        <span
-                            className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-80 dark:bg-accent"
-                        ></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                        <div
-                                            className="absolute right-0 size-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                        <div
-                                            className="absolute right-0 size-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                        <div
-                                            className="absolute right-0 size-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                        <div
-                                            className="absolute right-0 size-3 rounded-full border-2 border-white bg-primary dark:border-navy-700 dark:bg-accent"
-                                        >
-                        <span
-                            className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-80 dark:bg-accent"
-                        ></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                        <div
-                                            className="absolute right-0 size-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                        <div
-                                            className="absolute right-0 size-3 rounded-full border-2 border-white bg-slate-300 dark:border-navy-700"
-                                        ></div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                    </div>
-                                </div>
-                                <div
-                                    className="flex cursor-pointer items-center justify-center py-2.5 hover:bg-slate-150 dark:hover:bg-navy-600"
-                                >
-                                    <div className="avatar size-10">
-                                        <img
-                                            className="rounded-full"
-                                            src="/images/200x200.png"
-                                            alt="avatar"
-                                        />
-                                    </div>
-                                </div>
+                                { contacts.map((contact) => (
+                                    <ContactItem key={contact.id} contact={contact} variant="mini" />
+                                )) }
                             </div>
                         </div>
 
-                        <div className="py-3">
-                            <button
-                                className="btn size-10 rounded-full border border-slate-200 p-0 font-medium hover:bg-slate-150 focus:bg-slate-150 active:bg-slate-150/80 dark:border-navy-500 dark:hover:bg-navy-500 dark:focus:bg-navy-500 dark:active:bg-navy-500/90"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    className="size-6"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="2"
-                                >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"
-                                    />
-                                </svg>
-                            </button>
-                        </div>
+                        <ChatListSettings />
                     </div>
                 </div>
             </div>
