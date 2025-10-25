@@ -1,13 +1,16 @@
 import { type Options } from '@popperjs/core';
 import { usePopper } from "./hook/usePopper.tsx";
 import type React from "react";
+import type { Contact } from "./types/contact.ts";
 
 interface ChatHeaderProps {
+    contact?: Contact;
     onToggleChatDetail: () => void;
     isChatDetailOpen: boolean;
 }
 
 export const ChatHeader: React.FC<ChatHeaderProps> = ({
+                                                          contact,
                                                    onToggleChatDetail,
                                                    isChatDetailOpen
                                                }) => {
@@ -37,6 +40,10 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
         console.log('Popper toggled:', isOpen);
     });
 
+    const displayName = contact?.name || 'Select a contact';
+    const displayAvatar = contact?.avatar || '/images/200x200.png';
+    const displayStatus = contact?.status === 'online' ? 'Online' : 'Last seen recently';
+
     return (
         <div className="chat-header relative z-10 flex h-[61px] w-full shrink-0 items-center justify-between border-b border-slate-150 bg-white px-[calc(var(--margin-x)-.5rem)] shadow-xs transition-[padding,width] duration-[.25s] dark:border-navy-700 dark:bg-navy-800">
             <div className="flex items-center space-x-5">
@@ -49,15 +56,16 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
                         <span></span>
                     </button>
                 </div>
-                <div data-toggle="drawer" data-target="#chat-detail"
+                <div onClick={onToggleChatDetail}
                      className="flex cursor-pointer items-center space-x-4 font-inter">
                     <div className="avatar">
-                        <img className="rounded-full" src="/images/avatar/avatar-19.jpg" alt="avatar"/>
+                        <img className="rounded-full" src={displayAvatar} alt="avatar"/>
                     </div>
                     <div>
-                        <p className="font-medium text-slate-700 line-clamp-1 dark:text-navy-100"> Konnor
-                            Guzman </p>
-                        <p className="mt-0.5 text-xs">Last seen recently</p>
+                        <p className="font-medium text-slate-700 line-clamp-1 dark:text-navy-100">
+                            { displayName }
+                        </p>
+                        <p className="mt-0.5 text-xs">{ displayStatus }</p>
                     </div>
                 </div>
             </div>

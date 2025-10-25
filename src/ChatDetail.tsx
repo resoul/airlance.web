@@ -1,8 +1,10 @@
 import { DarkModeToggle } from "./darkMode";
 import { useDrawer } from "./hook/useDrawer.tsx";
 import { useTab } from "./hook/useTab.tsx";
+import type { Contact } from "./types/contact.ts";
 
 interface ChatDetailProps {
+    contact?: Contact;
     drawer: ReturnType<typeof useDrawer>;
 }
 
@@ -111,7 +113,7 @@ const FilesTabContent: React.FC = () => (
     </div>
 );
 
-export const ChatDetail: React.FC<ChatDetailProps> = ({ drawer }) => {
+export const ChatDetail: React.FC<ChatDetailProps> = ({ contact, drawer }) => {
     const tabs = [
         {
             id: "#tab-media-images",
@@ -139,6 +141,10 @@ export const ChatDetail: React.FC<ChatDetailProps> = ({ drawer }) => {
             console.log('Active tab:', tabId);
         },
     })
+
+    const displayName = contact?.name || 'Select a contact';
+    const displayAvatar = contact?.avatar || '/images/200x200.png';
+    const displayRole = 'Frontend Developer';
 
     return (
         <div className="drawer drawer-right">
@@ -169,11 +175,12 @@ export const ChatDetail: React.FC<ChatDetailProps> = ({ drawer }) => {
                     </div>
                     <div className="mt-5 flex flex-col items-center">
                         <div className="avatar size-20">
-                            <img className="rounded-full" src="/images/avatar/avatar-19.jpg" alt="avatar"/>
+                            <img className="rounded-full" src={displayAvatar} alt="avatar"/>
                         </div>
-                        <h3 className="mt-2 text-lg font-medium text-slate-700 dark:text-navy-100"> Konnor
-                            Guzman </h3>
-                        <p>Frontend Developer</p>
+                        <h3 className="mt-2 text-lg font-medium text-slate-700 dark:text-navy-100">
+                            { displayName }
+                        </h3>
+                        <p>{ displayRole }</p>
                         <div className="mt-2 flex space-x-1.5">
                             <button
                                 className="btn size-10 rounded-full p-0 text-slate-600 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:text-navy-100 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25">
