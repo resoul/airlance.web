@@ -55,7 +55,7 @@ const initialMessages: Message[] = [
     {
         id: '6',
         text: '',
-        timestamp: new Date('2024-01-21T08:29:00'),
+        timestamp: new Date('2025-10-23T08:29:00'),
         isOwn: true,
         images: [
             '/images/800x600.png'
@@ -64,7 +64,7 @@ const initialMessages: Message[] = [
     {
         id: '7',
         text: 'Please Download This File',
-        timestamp: new Date('2024-01-21T08:31:00'),
+        timestamp: new Date('2025-10-24T08:31:00'),
         isOwn: true
     }
 ];

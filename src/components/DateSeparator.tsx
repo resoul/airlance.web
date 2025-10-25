@@ -3,18 +3,33 @@ interface DateSeparatorProps {
 }
 
 export function DateSeparator({ date }: DateSeparatorProps) {
-    const formatDate = (date: Date) => {
-        const today = new Date();
-        const yesterday = new Date(today);
-        yesterday.setDate(yesterday.getDate() - 1);
+    const formatDate = (date: Date): string => {
+        const now = new Date();
+        const messageDate = new Date(date);
 
-        if (date.toDateString() === today.toDateString()) {
+        now.setHours(0, 0, 0, 0);
+        messageDate.setHours(0, 0, 0, 0);
+
+        const diffTime = now.getTime() - messageDate.getTime();
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays === 0) {
             return 'Today';
-        } else if (date.toDateString() === yesterday.toDateString()) {
-            return 'Yesterday';
-        } else {
-            return date.toLocaleDateString('en-US', { weekday: 'long' });
         }
+
+        if (diffDays === 1) {
+            return 'Yesterday';
+        }
+
+        if (diffDays > 1 && diffDays <= 6) {
+            return messageDate.toLocaleDateString('en-US', { weekday: 'long' });
+        }
+
+        const day = String(messageDate.getDate()).padStart(2, '0');
+        const month = String(messageDate.getMonth() + 1).padStart(2, '0');
+        const year = messageDate.getFullYear();
+
+        return `${day}.${month}.${year}`;
     };
 
     return (
