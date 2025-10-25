@@ -271,6 +271,7 @@ export function Sidebar() {
                             <Tooltip
                                 as="a"
                                 href="/messenger"
+                                placement="top"
                                 content="All Chats"
                                 className="btn size-9 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                             >
@@ -279,6 +280,7 @@ export function Sidebar() {
                             <Tooltip
                                 as="a"
                                 href="/users"
+                                placement="top"
                                 content="Users"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
@@ -287,6 +289,7 @@ export function Sidebar() {
                             <Tooltip
                                 as="a"
                                 href="/group"
+                                placement="top"
                                 content="Groups"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
@@ -295,6 +298,7 @@ export function Sidebar() {
                             <Tooltip
                                 as="a"
                                 href="/channels"
+                                placement="top"
                                 content="Channels"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
@@ -303,6 +307,7 @@ export function Sidebar() {
                             <Tooltip
                                 as="a"
                                 href="/more"
+                                placement="top"
                                 content="More"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
