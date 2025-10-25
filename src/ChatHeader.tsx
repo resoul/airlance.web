@@ -2,6 +2,7 @@ import { type Options } from '@popperjs/core';
 import { usePopper } from "./hook/usePopper.tsx";
 import type React from "react";
 import type { Contact } from "./types/contact.ts";
+import { useNavigate } from 'react-router-dom';
 
 interface ChatHeaderProps {
     contact?: Contact;
@@ -14,6 +15,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
                                                    onToggleChatDetail,
                                                    isChatDetailOpen
                                                }) => {
+    const navigate = useNavigate();
     const config: Partial<Options> = {
         placement: 'bottom-end',
         modifiers: [
@@ -29,6 +31,10 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
     const handleClick = () => {
         document.body.classList.toggle("is-sidebar-open");
     }
+
+    const handleVideoClick = () => {
+        navigate(`/video`);
+    };
 
     const {
         refEl,
@@ -69,6 +75,7 @@ export const ChatHeader: React.FC<ChatHeaderProps> = ({
             </div>
             <div className="-mr-1 flex items-center">
                 <button
+                    onClick={handleVideoClick}
                     className="btn hidden size-9 rounded-full p-0 text-slate-500 hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-navy-200 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25 sm:flex">
                     <svg xmlns="http://www.w3.org/2000/svg" className="size-5.5" fill="none" viewBox="0 0 24 24"
                          stroke="currentColor" strokeWidth="1.5">

@@ -13,8 +13,8 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const scrollToBottom = (behavior: ScrollBehavior = "smooth") => {
+        messagesEndRef.current?.scrollIntoView({ behavior });
     };
 
     useEffect(() => {
@@ -25,11 +25,22 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
         return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
     };
 
-    const shouldShowDateSeparator = (currentMsg: Message, prevMsg?: Message) => {
-        if (!prevMsg) return true;
-        const currentDate = new Date(currentMsg.timestamp).toDateString();
-        const prevDate = new Date(prevMsg.timestamp).toDateString();
-        return currentDate !== prevDate;
+    const isDifferentDay = (a?: Message, b?: Message) => {
+        if (!a || !b) return true;
+        return (
+            new Date(a.timestamp).toDateString() !==
+            new Date(b.timestamp).toDateString()
+        );
+    };
+
+    const shouldShowDateSeparator = (current: Message, prev?: Message) =>
+        isDifferentDay(current, prev);
+
+    const shouldShowAvatarAndTime = (current: Message, next?: Message) => {
+        if (!next) return true; // последнее сообщение в списке
+        if (current.isOwn !== next.isOwn) return true; // другой автор
+        if (isDifferentDay(current, next)) return true; // новый день — показываем
+        return false;
     };
 
     return (
@@ -39,33 +50,44 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
         >
             <div className="space-y-5">
                 {messages.map((message, index) => {
-                    const showDateSeparator = shouldShowDateSeparator(message, messages[index - 1]);
+                    const prev = messages[index - 1];
+                    const next = messages[index + 1];
+                    const showDateSeparator = shouldShowDateSeparator(message, prev);
+                    const showAvatarAndTime = shouldShowAvatarAndTime(message, next);
+                    const isOwn = message.isOwn;
+
                     return (
                         <div key={message.id}>
                             {showDateSeparator && (
                                 <DateSeparator date={new Date(message.timestamp)} />
                             )}
 
-                            {message.isOwn ? (
+                            {isOwn ? (
                                 <div className="flex items-start justify-end space-x-2.5 sm:space-x-5">
                                     <div className="flex flex-col items-end space-y-3.5">
                                         <div className="ml-4 max-w-lg sm:ml-10">
                                             <div className="rounded-2xl rounded-tr-none bg-info/10 p-3 text-slate-700 shadow-xs dark:bg-accent dark:text-white">
                                                 {message.text}
                                             </div>
-                                            <p className="mt-1 ml-auto text-left text-xs text-slate-400 dark:text-navy-300">
-                                                {formatTime(new Date(message.timestamp))}
-                                            </p>
+                                            {showAvatarAndTime && (
+                                                <p className="mt-1 ml-auto text-left text-xs text-slate-400 dark:text-navy-300">
+                                                    {formatTime(new Date(message.timestamp))}
+                                                </p>
+                                            )}
                                         </div>
                                     </div>
                                     <div className="avatar">
-                                        <img className="rounded-full" src={avatarSrc} alt="avatar"/>
+                                        {showAvatarAndTime && (
+                                            <img className="rounded-full" src={avatarSrc} alt="avatar"/>
+                                        )}
                                     </div>
                                 </div>
                             ) : (
                                 <div className="flex items-start space-x-2.5 sm:space-x-5">
                                     <div className="avatar">
-                                        <img className="rounded-full" src={message.avatar || '/images/200x200.png'} alt="avatar"/>
+                                        {showAvatarAndTime && (
+                                            <img className="rounded-full" src={message.avatar || '/images/200x200.png'} alt="avatar"/>
+                                        )}
                                     </div>
                                     <div className="flex flex-col items-start space-y-3.5">
                                         <div className="mr-4 max-w-lg sm:mr-10">
@@ -109,9 +131,11 @@ export function ChatMessages({ messages }: ChatMessagesProps) {
                                                             </div>
                                                         )}
                                                     </div>
-                                                    <p className="mt-1 ml-auto text-right text-xs text-slate-400 dark:text-navy-300">
-                                                        {formatTime(new Date(message.timestamp))}
-                                                    </p>
+                                                    {showAvatarAndTime && (
+                                                        <p className="mt-1 ml-auto text-right text-xs text-slate-400 dark:text-navy-300">
+                                                            {formatTime(new Date(message.timestamp))}
+                                                        </p>
+                                                    )}
                                                 </>
                                             )}
                                         </div>
