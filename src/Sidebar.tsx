@@ -5,19 +5,8 @@ import type { Story } from "./stories/types.ts";
 import { ContactItem } from "./components/ContactItem.tsx";
 import { contacts } from "./data/contacts.ts";
 import { Tooltip } from "./hook/useTooltip.tsx";
-import { DashboardIcon } from "./icons/DashboardIcon.tsx";
-import { ApplicationIcon } from "./icons/ApplicationIcon.tsx";
-import { LayoutIcon } from "./icons/LayoutIcon.tsx";
-import { SettingsIcon } from "./icons/SettingsIcon.tsx";
-import { ElementIcon } from "./icons/ElementIcon.tsx";
-import { ComponentIcon } from "./icons/ComponentIcon.tsx";
-import { FormIcon } from "./icons/FormIcon.tsx";
 import { ChatListSettings } from "./ChatListSettings.tsx";
-import { ChatsIcon } from "./icons/ChatsIcon.tsx";
-import { UsersIcon } from "./icons/UsersIcon.tsx";
-import { GroupsIcon } from "./icons/GroupsIcon.tsx";
-import { ChannelsIcon } from "./icons/ChannelsIcon.tsx";
-import { MoreIcon } from "./icons/MoreIcon.tsx";
+import { Icon } from './icons';
 
 const mockStories: Story[] = [
     {
@@ -93,7 +82,7 @@ export function Sidebar() {
                             placement="right"
                             className="tooltip-main-sidebar flex size-11 items-center justify-center rounded-lg outline-hidden transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                         >
-                            <DashboardIcon className="size-7" />
+                            <Icon name="dashboard" className="size-7" />
                         </Tooltip>
                         <Tooltip
                             as="a"
@@ -102,7 +91,7 @@ export function Sidebar() {
                             placement="right"
                             className="tooltip-main-sidebar flex size-11 items-center justify-center rounded-lg bg-primary/10 text-primary outline-hidden transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:bg-navy-600 dark:text-accent-light dark:hover:bg-navy-450 dark:focus:bg-navy-450 dark:active:bg-navy-450/90"
                         >
-                            <ApplicationIcon className="size-7" />
+                            <Icon name="application" className="size-7" />
                         </Tooltip>
                         <Tooltip
                             as="a"
@@ -111,7 +100,7 @@ export function Sidebar() {
                             placement="right"
                             className="tooltip-main-sidebar flex size-11 items-center justify-center rounded-lg outline-hidden transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                         >
-                            <LayoutIcon />
+                            <Icon name="layout" className="size-7" />
                         </Tooltip>
                         <Tooltip
                             as="a"
@@ -120,7 +109,7 @@ export function Sidebar() {
                             placement="right"
                             className="tooltip-main-sidebar flex size-11 items-center justify-center rounded-lg outline-hidden transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                         >
-                            <FormIcon className="size-7" />
+                            <Icon name="form" className="size-7" />
                         </Tooltip>
                         <Tooltip
                             as="a"
@@ -129,7 +118,7 @@ export function Sidebar() {
                             placement="right"
                             className="tooltip-main-sidebar flex size-11 items-center justify-center rounded-lg outline-hidden transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                         >
-                            <ComponentIcon className="size-7" />
+                            <Icon name="component" className="size-7" />
                         </Tooltip>
                         <Tooltip
                             as="a"
@@ -138,7 +127,7 @@ export function Sidebar() {
                             placement="right"
                             className="tooltip-main-sidebar flex size-11 items-center justify-center rounded-lg outline-hidden transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                         >
-                            <ElementIcon className="size-7" />
+                            <Icon name="element" className="size-7" />
                         </Tooltip>
                     </div>
 
@@ -147,7 +136,7 @@ export function Sidebar() {
                             href="forms-layout-5.html"
                             className="flex size-11 items-center justify-center rounded-lg outline-hidden transition-colors duration-200 hover:bg-primary/20 focus:bg-primary/20 active:bg-primary/25 dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                         >
-                            <SettingsIcon className="size-7" />
+                            <Icon name="settings" className="size-7" />
                         </a>
 
                         <Profile />
@@ -275,7 +264,7 @@ export function Sidebar() {
                                 content="All Chats"
                                 className="btn size-9 rounded-full p-0 text-primary hover:bg-slate-300/20 focus:bg-slate-300/20 active:bg-slate-300/25 dark:text-accent dark:hover:bg-navy-300/20 dark:focus:bg-navy-300/20 dark:active:bg-navy-300/25"
                             >
-                                <ChatsIcon className="size-5" />
+                                <Icon name="chats" className="size-5" fill="currentColor" viewBox="0 0 20 20" />
                             </Tooltip>
                             <Tooltip
                                 as="a"
@@ -284,7 +273,7 @@ export function Sidebar() {
                                 content="Users"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
-                                <UsersIcon className="size-5" stroke="currentColor" strokeWidth="1.5" />
+                                <Icon name="users" className="size-5" stroke="currentColor" strokeWidth="1.5" />
                             </Tooltip>
                             <Tooltip
                                 as="a"
@@ -293,7 +282,7 @@ export function Sidebar() {
                                 content="Groups"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
-                                <GroupsIcon className="size-5" stroke="currentColor" strokeWidth="1.5" />
+                                <Icon name="groups" className="size-5" stroke="currentColor" strokeWidth="1.5" />
                             </Tooltip>
                             <Tooltip
                                 as="a"
@@ -302,7 +291,7 @@ export function Sidebar() {
                                 content="Channels"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
-                                <ChannelsIcon className="size-5" stroke="currentColor" strokeWidth="1.5" />
+                                <Icon name="channels" className="size-5" stroke="currentColor" strokeWidth="1.5" />
                             </Tooltip>
                             <Tooltip
                                 as="a"
@@ -311,7 +300,7 @@ export function Sidebar() {
                                 content="More"
                                 className="btn size-9 rounded-full p-0 hover:bg-slate-300/20 hover:text-primary focus:bg-slate-300/20 focus:text-primary active:bg-slate-300/25 dark:hover:bg-navy-300/20 dark:hover:text-accent dark:focus:bg-navy-300/20 dark:focus:text-accent dark:active:bg-navy-300/25"
                             >
-                                <MoreIcon className="size-5" stroke="currentColor" strokeWidth="1.5" />
+                                <Icon name="more" className="size-5" stroke="currentColor" strokeWidth="1.5" />
                             </Tooltip>
                         </div>
                     </div>
